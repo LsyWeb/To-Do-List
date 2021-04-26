@@ -1,0 +1,385 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    font-size: 14px;
+    color: #333;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+input{
+    border: 1px solid #ccc;
+    outline: none;
+    background: none;
+}
+button{
+    outline: none;
+    border: none;
+}
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.wrapper header{
+    width: 100%;
+    height: 4.5rem;
+    background: linear-gradient(to right,#333,#111,#ccc);
+    display: flex;
+    align-items: center;
+    position:fixed;
+    top: 0;
+    left: 0;
+}
+.wrapper header::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+    background: url(../images/bg.png) center;
+    z-index: -1;
+}
+header .btn{
+    display: none;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    z-index: 2;
+}
+header .btn span{
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #ccc;
+    margin: 5px 0;
+}
+header .btn:hover span{
+    animation: btnMove 3s infinite;
+}
+header .drap-list{
+    display: none;
+    position: absolute;
+    top: 4.5rem;
+    background:linear-gradient(#333,#222,#111);
+    width: 100%;
+}
+header .drap-list .student-item{
+    color: #ccc;
+    height: 3rem;
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+header .drap-list .student-item:hover{
+    color: #fff;
+}
+
+header .logo{
+    height: 3rem;
+    line-height: 3rem;
+    display: flex;
+    align-items: center;
+}
+header .logo img{
+    padding-left: 30px;
+    width: 3rem;
+    height: 3rem;
+}
+header .logo span{
+    display: inline-block;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin:0 8px;
+    text-shadow: 4px 2px 2px #ccc;
+    animation: jumping .75s alternate infinite;
+}
+header .logo span:nth-of-type(1){
+    animation-delay: 0s;
+}
+header .logo span:nth-of-type(2){
+    animation-delay: .25s;
+}
+header .logo span:nth-of-type(3){
+    animation-delay: .5s;
+}
+header .logo span:nth-of-type(4){
+    animation-delay: .75s;
+}
+@keyframes jumping {
+    0%{
+        transform: translateY(0);
+        text-shadow: 4px 2px 2px #ccc;
+    }
+    100%{
+        transform: translateY(-20px);
+        text-shadow: 4px 6px 2px #ccc;
+    }
+}
+@keyframes btnMove{
+    0%{
+        transform: rotate(0);
+    }
+    25%{
+        transform: rotate(45deg);
+    }
+    50%{
+        transform: rotate(0);
+    }
+    75%{
+        transform: rotate(-45deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}
+
+.wrapper .left-menu{
+    width: 200px;
+    min-height: calc(100vh - 4.5rem);
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
+    background: linear-gradient(#333,#222,#111);
+}
+.wrapper .left-menu::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../images/bg.png) center repeat;
+    opacity: .4;
+    z-index: -1;
+}
+.wrapper .left-menu h5{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.wrapper .left-menu ul{
+    margin-top: 2rem;
+    text-align: center;
+}
+.wrapper .left-menu ul .student-item{
+    color: #ccc;
+    font-size: 1rem;
+    padding: 10px 5px;
+    cursor: pointer;
+    font-weight: bolder;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.wrapper .left-menu ul .student-item:hover{
+    color: #fff;
+    transition: all .3s ease-in-out;
+}
+.wrapper .left-menu ul .student-item.active{
+    color:#fff;
+    background-color: rgba(255,255,255,.3);
+}
+.wrapper .right-content{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 4.5rem;
+    padding-left: 200px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.1);
+}
+.wrapper .right-content .content-item{
+    display: none;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.wrapper .right-content .content-item.show{
+    display: block;
+}
+
+/* 学生列表 */
+#student-list{
+    width: 100%;
+    height: 100%;
+}
+#student-list .search{
+    width: 100%;
+    margin: 20px 0 20px 0;
+}
+#student-list .search{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+#student-list .search input{
+    width: 180px;
+    height: 2.2rem;
+    margin: 0 20px 0 10px;
+    text-indent: 1.1rem;
+    border-radius: 5px;
+}
+#student-list .search button{
+    background-color: #333;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#student-list .search .search-back{
+    display: none;
+    background-color: #aaa;
+}
+#student-list .tab-student{
+    width: 100%;
+}
+#student-list .tab-student  tr{
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    background-color: #fff;
+    width: 100%;
+    
+}
+#student-list .tab-student thead  tr{
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #ccc;
+}
+#student-list .tab-student  tr td{
+    text-align: center; 
+}
+#student-list .tab-student .edit-btn{
+    background: #006400;
+    border-radius: 5px;
+    color: #fff;
+    padding:5px 10px;
+    cursor: pointer;
+}
+#student-list .tab-student .remove-btn{
+    background: #CD0000;
+    border-radius: 5px;
+    color: #fff;
+    padding:5px 10px;
+    cursor: pointer;
+}
+
+/* 新增学生 */
+#student-add{
+    text-align: center;
+}
+#add-student-form{
+    margin-top: 30px;
+}
+#add-student-form > div .item{
+    margin: 10px 0;
+}
+#add-student-form .item:not(.section) input{
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 10px;
+    text-indent: 1rem;
+}
+#add-student-form .item .con{
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}
+#add-student-form .btn.item input{
+    width: 80px;
+    font-weight: bold;
+    cursor: pointer;
+    text-indent: 0;
+}
+#add-student-form .btn.item input[type="button"]{
+    background-color: #006400;
+    color: #fff;
+    margin-left: 10px;
+}
+#add-student-form .btn.item input[type="reset"]{
+    background-color: #aaa;
+    color: #fff;
+}
+
+/* 弹出层 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.modal form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    padding: 20px;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+.modal form label:not(.sex){
+    display: inline-block;
+    width: 50px;
+}
+.modal form div{
+    margin: 10px 0;
+}
+.modal form input:not([type="radio"]){
+    width: 200px;
+    padding: 5px 0;
+    border-radius: 10px;
+    text-indent: 1rem;
+}
+.modal form input.btn{
+    width: 50px;
+    padding: 5px 10px;
+    margin-left: 70px;
+    text-indent: 0;
+    cursor: pointer;
+}
+/* 统计图表 */
+#student-echarts{
+    width: 100%;
+    height: 100%;
+}
+#student-echarts div{
+    width: 750px;
+    height: 700px;
+    display: inline-block;
+}
+#student-echarts div.chart2{
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 750px;
+    height: 700px;
+}
+@media all and (max-width:768px){
+    header .btn{
+        display: block;
+    }
+    .wrapper .left-menu{
+        display: none;
+    }
+}

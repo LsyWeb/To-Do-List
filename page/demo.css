@@ -1,0 +1,19 @@
+.my-page-wrap *{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float:left;
+}
+.my-page-wrap li{
+    height: 30px;
+    line-height: 30px;
+    background-color: #ddd;
+    text-align: center;
+    padding: 0 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    user-select: none;
+}
+.my-page-wrap .my-page-num.current{
+    background-color: #428bca;
+}
