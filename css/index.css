@@ -311,7 +311,7 @@ header .logo span:nth-of-type(4){
 #add-student-form .btn.item input[type="button"]{
     background-color: #006400;
     color: #fff;
-    margin-left: 25px;
+    margin-right: 25px;
 }
 #add-student-form .btn.item input[type="reset"]{
     background-color: #aaa;
