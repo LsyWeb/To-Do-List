@@ -1,0 +1,209 @@
+<div class="logo">
+    <a href="//www.jd.com" class="logo_tit_lk">
+        <img src="//misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite.png" alt="" class="logo_Jd">
+        <img src="http://img1.360buyimg.com/da/jfs/t1/32280/15/6668/126998/5c90a45eE586447b9/4171db4ecff2e253.gif?v=0.03260861907067891"
+            alt="" class="logo_gif">
+        <span class="logo_txt">工作提效神器</span>
+        <span class="logo_txt logo_look">去看看 ></span>
+    </a>
+
+</div>
+<div class="search">
+    <div class="search-form">
+        <input type="text" id="search-input" placeholder="机械键盘">
+        <a class="iconfont search-camera"z href="https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fwww.jd.com%2F%3Fcu%3Dtrue%26utm_source%3Dwww.infinitynewtab.com%26utm_medium%3Dtuiguang%26utm_campaign%3Dt_45363_%26utm_term%3D2bddb84fe22741b7b8afe6fbc78680bf">&#xe614;</a>
+        <button class="search-btn iconfont">&#xe6a8;</button>
+        <ul class="search-list">
+
+        </ul>
+    </div>
+</div>
+<div class="hotwords"></div>
+<div class="navitems">
+    <ul>
+        <li class="fore1"><a href="https://miaosha.jd.com/">秒杀</a></li>
+        <li class="fore2"><a href="https://a.jd.com/">优惠券</a></li>
+        <li class="fore3"><a
+                href="https://plus.jd.com/index?flow_system=appicon&amp;flow_entrance=appicon11&amp;flow_channel=pc">PLUS会员</a>
+        </li>
+        <li class="fore4"><a href="https://red.jd.com/">品牌闪购</a></li>
+    </ul>
+    <ul>
+        <li class="fore5"><a href="https://paimai.jd.com/">拍卖</a></li>
+        <li class="fore6"><a href="https://jiadian.jd.com/">京东家电</a></li>
+        <li class="fore7"><a href="https://chaoshi.jd.com/">京东超市</a></li>
+        <li class="fore8"><a href="https://fresh.jd.com/">京东生鲜</a></li>
+    </ul>
+    <ul>
+        <li class="fore9"><a href="https://www.jd.hk/">京东国际</a></li>
+        <li class="fore10"><a href="https://jr.jd.com/">京东金融</a></li>
+    </ul>
+</div>
+<div class="treasure">
+    <a id="J_promo_lk" class="promo_lk" href="https://pro.jd.com/mall/active/3icA8dx2jdTYEV2Bas68QKq6g1LS/index.html"
+        aria-label="推广位">
+        <img src="https://img11.360buyimg.com/babel/jfs/t1/166031/32/8804/91474/603d9b69E92708df8/1e33bdff84e2c848.png.webp alt="">
+    </a>
+</div>
+<div class=" shoppingCar">
+        <div class="shoppingIcon">
+            <i class="iconfont">&#xe73d;</i>
+            <a target="_blank" href="//cart.jd.com/cart.action">我的购物车</a>
+            <i class="shoppingNum">0</i>
+        </div>
+</div>
+<script>
+    //拿到数据之后对下拉搜索框进行渲染
+    (function () {
+        window.searchCb = function (res) {
+            console.log(res);
+
+            var str = '';
+            res.result.forEach(function (item, index) {
+                str += `<li><span calss="product-name">${item[0]}</span>
+                        <span id="product-number">约${parseInt(item[1])}个商品</span></li>`;
+
+            })
+            if (res.result.length == 0) {
+                str = '未找到商品信息';
+            }
+            $('.search-list').html(str).show();
+        }
+
+        var timer = null;
+        $('#search-input').on('input', function () {
+            clearTimeout(timer)
+            var val = $(this).val();//获取表单里的value值
+            if (val) {
+                timer = setTimeout(function () {
+                    $.ajax({
+                        url: 'https://suggest.taobao.com/sug',
+                        data: {
+                            code: 'uft-8',
+                            q: val,
+                            callback: 'searchCb'
+                        },
+                        dataType: 'jsonp',
+                    })
+                }, 300);
+            } else {
+                $('.search-list').hide();
+            }
+        });
+
+        //当鼠标离开form的区域 下拉列表隐藏
+        $('.search-from').mouseleave(function () {
+            $('.search-list').hide();
+        });
+
+        //获取热词
+        $.ajax({
+            url: '/hotwords',
+            dataType: 'json',
+            success: function (res) {
+                console.log(res);
+                var str = '';
+                res.result.forEach(function (item, index) {
+                    str += `<a href="${item['href']}">${item['word']}</a>`
+                })
+                $('.hotwords').html(str);
+            }
+        })
+
+        //当鼠标停在第一个热词上停止 变换热词
+        $('.hotwords').on('mouseenter', 'a:first-of-type', function () {
+            clearInterval(randomWordTimer);
+        }).on('mouseleave', 'a:first-of-type', function () {
+            randomWord();
+        })
+
+        //获取随机的一个热词
+        var randomWordTimer = null;
+        function randomWord() {
+            randomWordTimer = setInterval(function () {
+                $.ajax({
+                    url: '/randomWord',
+                    dataType: 'json',
+                    success: function (res) {
+                        $('.hotwords')
+                            .find('a')
+                            .eq(0)
+                            .text(res.word)
+                            .attr('href', res.href)
+                    }
+                })
+            }, 2500)
+
+        }
+        randomWord();
+        $('a').attr('target', '_blank');
+
+        // logo动画
+
+        logoChange();
+        setTimeout(function () {
+            $('.logo').trigger('mouseenter',logoChange()).trigger('mouseleave',logoChange())
+        },3000)
+        
+
+        function logoChange() {
+            var gifTimer = null;
+            $('.logo').mouseenter(function () {
+                clearInterval(gifTimer);
+                if ($(this).find('.logo_gif').hasClass('strat')) {
+                    $('.logo_gif').removeClass('end');
+                } else {
+                    $('.logo_gif')
+                        .fadeIn()
+                        .addClass('strat')
+                        .removeClass('end')
+                        .attr('src', 'http://img1.360buyimg.com/da/jfs/t1/32280/15/6668/126998/5c90a45eE586447b9/4171db4ecff2e253.gif?v=' + Math.random());
+
+                    setTimeout(function () {
+                        //规定四秒之后动画完成，添加完成动画的class
+                        $('.logo_gif').addClass('end').removeClass('strat');
+
+
+                    }, 5000)
+
+                    setTimeout(function () {
+                        $('.logo_txt').css({
+                            opacity: 1
+                        });
+                        $('.logo_look').css({
+                            opacity: 1
+                        })
+                    }, 3200)
+                }
+
+            }).mouseleave(function () {
+
+                if ($('.logo_gif').hasClass('end')) {
+                    $(this).find('.logo_gif').fadeOut();
+                } else {
+                    //每隔一段时间就监测一下是否完成动画
+                    //如果动画完成就把gif动图消失，并且清理定时器
+                    gifTimer = setInterval(function () {
+                        if ($('.logo_gif').hasClass('end')) {
+                            $('.logo_gif').fadeOut();
+
+                            $('.logo_txt').css({
+                                opacity: 0
+                            });
+                            $('.logo_look').css({
+                                opacity: 0
+                            })
+                            clearInterval(gifTimer);
+                        }
+                    }, 1000)
+
+                }
+            })
+
+        }
+
+
+    }());
+
+
+</script>

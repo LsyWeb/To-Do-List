@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #eee;
+    margin: 0 0 100px 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-style: normal;
+}
+
+.my-swiper-wrapper a img {
+    width: 100%;
+    height: 100%;
+}
+/* .sliderWrapper .my-swiper-spot.active{
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    
+} */
+
+#shortcut {
+    /* height: 30px; */
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+}
+
+#header {
+    height: 140px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.w,
+#fs {
+    width: 1190px;
+    margin: 0 auto;
+}
+
+#fs {
+    height: 470px;
+    margin-top: 10px;
+}
+
+#fs .fs-1 {
+    width: 190px;
+    height: 100%;
+    background-color: #fff;
+    float: left;
+}
+
+#fs .fs-2 {
+    height: 790px;
+    height: 100%;
+    float: left;
+    margin: 0 10px;
+}
+
+#fs .fs-2 .sliderWrapper {
+    width: 590px;
+    height: 100%;
+    float: left;
+    background-color: #ddd;
+    margin-right: 10px;
+}
+
+#fs .fs-2 .sliderBanner {
+    width: 190px;
+    height: 470px;
+    float: left;
+    background-color: #ddd;
+}
+
+#fs .fs-3 {
+    width: 190px;
+    height: 470px;
+    background-color: #fff;
+    float: right;
+}
+
+#seckill {
+    width: 100%;
+    height: 260px;
+    margin-top: 20px;
+}

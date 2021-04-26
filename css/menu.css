@@ -1,0 +1,120 @@
+.fs-1 {
+    position: relative;
+}
+
+.fs-1 .menu {
+    padding: 10px 0;
+}
+
+.fs-1 .menu li {
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    padding-left: 18px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+.fs-1 .menu li.menu-active {
+    background-color: #ddd;
+}
+
+.fs-1 .menu .menu-titles a {
+    color: #333;
+    font-size: 14px;
+    transition: color .2s;
+    white-space: nowrap;
+}
+
+.fs-1 .menu .menu-titles a:hover {
+    color: #c81623;
+}
+
+.fs-1 .menu-content {
+    position: absolute;
+    left: 190px;
+    top: 0;
+    padding: 20px 0 10px;
+    width: 998px;
+    min-height: 470px;
+    border: 1px solid #f7f7f7;
+    background-color: #fff;
+    z-index: 101;
+    -webkit-box-shadow: 2px 0 5px rgba(0, 0, 0, .3);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, .3);
+    box-sizing: border-box;
+    display: none;
+}
+
+.fs-1 .menu-content .tabs {
+    padding-left: 24px;
+    height: 24px;
+}
+
+.fs-1 .menu-content .tabs a {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    padding: 0 30px 0 10px;
+    background-color: #333;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.fs-1 .menu-content .tabs a:hover {
+    background-color: #c81623;
+}
+
+.fs-1 .menu-content .tabs .iconfont {
+    margin-left: 5px;
+}
+
+.fs-1 .menu-content .details {
+    padding: 10px 0 0 20px;
+    font-size: 12px;
+}
+
+.fs-1 .menu-content .details dl {
+    width: 100%;
+    padding: 3px 0;
+    overflow: hidden;
+}
+
+.fs-1 .menu-content .details dl::after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.fs-1 .menu-content .details dt,
+.fs-1 .menu-content .details dd{
+    float: left;
+}
+
+.fs-1 .menu-content .details dt{
+    font-weight: 700;
+    color: #333;
+    width: 80px;
+    text-align: right;
+}
+.fs-1 .menu-content .details dt i{
+    float: right;
+    margin: 0 0 0 3px;
+}
+.fs-1 .menu-content .details dd{
+    margin-left: 10px;
+}
+.fs-1 .menu-content .details a{
+    color: #666;
+    display: inline-block;
+    padding: 0 7px;
+    margin: 3px 0;
+    height: 16px;
+    line-height: 16px;
+    white-space: nowrap;
+}
+.fs-1 .menu-content .details a:hover {
+    color: #c81623;
+  }

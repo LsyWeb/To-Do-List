@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'iconfont';
+    /* project id 2396243 */
+    src: url('//at.alicdn.com/t/font_2396243_j47345koac.eot');
+    src: url('//at.alicdn.com/t/font_2396243_j47345koac.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_2396243_j47345koac.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_2396243_j47345koac.woff') format('woff'),
+        url('//at.alicdn.com/t/font_2396243_j47345koac.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_2396243_j47345koac.svg#iconfont') format('svg');
+}
+
+.my-swiper-wrapper>* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.my-swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.my-swiper-wrapper .my-swiper-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.my-swiper-wrapper_fade .my-swiper-item {
+    position: absolute;
+    display: none;
+}
+
+.my-swiper-wrapper_animate .my-swiper-item {
+    float: left;
+}
+
+.my-swiper-btn {
+    width: 25px;
+    height: 35px;
+    line-height: 35px; 
+    color: #fff;
+    position: absolute;
+    top: calc(50% - 17.5px);
+    background-color: rgba(0, 0, 0, .15);
+    cursor: pointer;
+    user-select: none;
+}
+
+.my-swiper-leftBtn {
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+
+.my-swiper-rightBtn {
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+    right: 0
+}
+.iconfont{
+    width: 18px;
+    position: absolute;
+    display: inline-block;
+    font-family: 'iconfont';
+    font-style: normal;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+.my-swiper-leftBtn .iconfont{
+    left: 0;
+}
+.my-swiper-rightBtn .iconfont{
+    right: 0;
+}
+.my-swiper-spots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    padding:0 30px;
+}
+.my-swiper-spots span{
+    display: inline-block;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    margin: 0 2px;
+    border: 1px solid rgba(0,0,0,.05);
+    background: rgba(255,255,255,.4);
+}
